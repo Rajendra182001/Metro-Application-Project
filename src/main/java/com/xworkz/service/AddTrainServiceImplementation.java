@@ -130,6 +130,7 @@ public class AddTrainServiceImplementation implements AddTrainService {
     @Override
     public AddTrainDto findByTrainNumber(String trainNumber) {
         if (trainNumber != null) {
+
             AddTrainDto addTrainDto = new AddTrainDto();
             AddTrainEntity addTrainEntity = addTrainRepository.findTrainNumber(trainNumber);
             BeanUtils.copyProperties(addTrainEntity, addTrainDto);
