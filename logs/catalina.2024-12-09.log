@@ -127,3 +127,34 @@
  java.lang.Thread.run(Thread.java:748)
 09-Dec-2024 12:56:58.815 INFO [Thread-5] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
 09-Dec-2024 12:56:58.837 INFO [Thread-5] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+09-Dec-2024 13:02:51.392 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name:   Apache Tomcat/9.0.38
+09-Dec-2024 13:02:51.395 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Sep 10 2020 08:20:30 UTC
+09-Dec-2024 13:02:51.395 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.38.0
+09-Dec-2024 13:02:51.395 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+09-Dec-2024 13:02:51.395 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+09-Dec-2024 13:02:51.395 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+09-Dec-2024 13:02:51.395 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jdk1.8.0_261\jre
+09-Dec-2024 13:02:51.395 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_261-b12
+09-Dec-2024 13:02:51.395 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+09-Dec-2024 13:02:51.395 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\rajen\IdeaProjects\metro-application
+09-Dec-2024 13:02:51.395 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         D:\apache-tomcat-9.0.38
+09-Dec-2024 13:02:51.397 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=D:\apache-tomcat-9.0.38
+09-Dec-2024 13:02:51.397 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\rajen\IdeaProjects\metro-application
+09-Dec-2024 13:02:51.397 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\rajen\IdeaProjects\metro-application\temp
+09-Dec-2024 13:02:51.397 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\rajen\IdeaProjects\metro-application\conf\logging.properties
+09-Dec-2024 13:02:51.397 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+09-Dec-2024 13:02:51.397 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.3.6\New folder\New folder\IntelliJ IDEA Community Edition 2023.3.6\lib\idea_rt.jar=51995:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.3.6\New folder\New folder\IntelliJ IDEA Community Edition 2023.3.6\bin
+09-Dec-2024 13:02:51.397 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dfile.encoding=UTF-8
+09-Dec-2024 13:02:51.489 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent Loaded Apache Tomcat Native library [1.2.25] using APR version [1.7.0].
+09-Dec-2024 13:02:51.489 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+09-Dec-2024 13:02:51.489 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+09-Dec-2024 13:02:51.493 INFO [main] org.apache.catalina.core.AprLifecycleListener.initializeSSL OpenSSL successfully initialized [OpenSSL 1.1.1g  21 Apr 2020]
+09-Dec-2024 13:02:51.735 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+09-Dec-2024 13:02:51.853 INFO [main] org.apache.catalina.startup.Catalina.load Server initialization in [565] milliseconds
+09-Dec-2024 13:02:51.871 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service [Catalina]
+09-Dec-2024 13:02:51.871 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet engine: [Apache Tomcat/9.0.38]
+09-Dec-2024 13:02:51.877 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deploying deployment descriptor [C:\Users\rajen\IdeaProjects\metro-application\conf\Catalina\localhost\metro-application.xml]
+09-Dec-2024 13:02:56.542 INFO [main] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+09-Dec-2024 13:03:07.040 INFO [main] org.apache.catalina.startup.HostConfig.deployDescriptor Deployment of deployment descriptor [C:\Users\rajen\IdeaProjects\metro-application\conf\Catalina\localhost\metro-application.xml] has finished in [15,164] ms
+09-Dec-2024 13:03:07.040 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler ["http-nio-8080"]
+09-Dec-2024 13:03:07.056 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in [15206] milliseconds
