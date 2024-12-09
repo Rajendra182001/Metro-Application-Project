@@ -1,0 +1,22 @@
+package com.xworkz.repository;
+
+import com.xworkz.entity.PriceEntity;
+
+import java.util.List;
+
+public interface PriceRepository {
+
+    public String savePriceToDataBase(PriceEntity priceEntity);
+
+    PriceEntity findBySourceAndDestination(String source,String destination);
+
+    List<PriceEntity> readPrice();
+
+    PriceEntity findById(Integer priceId);
+
+    PriceEntity findByTrainType(String trainType);
+
+    PriceEntity findByPrice(Integer price);
+
+    PriceEntity findPriceBySourceAndDestination(Integer price,String source,String destination);
+}

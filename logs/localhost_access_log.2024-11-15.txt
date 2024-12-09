@@ -1,0 +1,9 @@
+0:0:0:0:0:0:0:1 - - [15/Nov/2024:00:07:25 +0530] "GET /metro-application HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [15/Nov/2024:00:07:26 +0530] "GET /metro-application/ HTTP/1.1" 200 3669
+0:0:0:0:0:0:0:1 - - [15/Nov/2024:00:07:28 +0530] "GET /favicon.ico HTTP/1.1" 404 682
+0:0:0:0:0:0:0:1 - - [15/Nov/2024:00:08:42 +0530] "GET /metro-application/inLogin HTTP/1.1" 200 6471
+0:0:0:0:0:0:0:1 - - [15/Nov/2024:00:08:44 +0530] "GET /metro-application/email?email=nataraju%40gmail.com HTTP/1.1" 200 26
+0:0:0:0:0:0:0:1 - - [15/Nov/2024:00:08:45 +0530] "POST /metro-application/inLogin HTTP/1.1" 200 3589
+0:0:0:0:0:0:0:1 - - [15/Nov/2024:00:08:45 +0530] "GET /metro-application/getImage/temp.png HTTP/1.1" 200 1939
+0:0:0:0:0:0:0:1 - - [15/Nov/2024:00:08:47 +0530] "GET /metro-application/getAllDetails?email=nataraju@gmail.com HTTP/1.1" 400 872
+0:0:0:0:0:0:0:1 - - [15/Nov/2024:00:09:39 +0530] "GET /metro-application/getAllDetails?email=nataraju@gmail.com HTTP/1.1" 200 1791
