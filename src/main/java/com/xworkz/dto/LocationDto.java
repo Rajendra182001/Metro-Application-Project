@@ -26,7 +26,7 @@ public class LocationDto {
     @NotEmpty(message = "locations must not be empty")
     @NotNull (message = "locations must not be null")
     @NotBlank (message = "locations must not be blank")
-    private String locations;
+    private String locationsName;
     private AddTrainDto addTrainDto;
 
 }

@@ -66,6 +66,7 @@ public class UserRegistrationController {
         if(isSaved){
             emailClass.mimeMessage(userRegistrationDto.getEmail());
             model.addAttribute("dto",userRegistrationDto);
+            model.addAttribute("success","your Registration is Completed,ThankYou");
             return "UserRegistration";
         }
         return "UserRegistration";
@@ -114,12 +115,12 @@ public class UserRegistrationController {
         if (userRegistrationDto != null){
             log.info(userRegistrationDto.getOtp());
             log.info(userRegistrationDto.getEmail());
-            boolean isSaved= userService.verifyEmailAndOtp(email, otp);
-            if (isSaved){
+            boolean isOtpVerified= userService.verifyEmailAndOtp(email, otp);
+            if (isOtpVerified){
                 model.addAttribute("email", userRegistrationDto);
-                model.addAttribute("success","Login Saved SuccessFully");
                 return "UserSuccessPage";
             }
+            model.addAttribute("emailError","invalid Otp");
             return "UserEmail";
         }
         return "UserEmail";
@@ -130,7 +131,7 @@ public class UserRegistrationController {
        {
            Random random = new Random();
            int randomNumber = random.nextInt(9000) + 1000;
-           SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss,EEE");
+               SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss,EEE");
            String currentDateTime = sdf.format(new Date());
            return "RAJ" + randomNumber + currentDateTime;
        }
@@ -144,7 +145,7 @@ public class UserRegistrationController {
            PriceDto priceDto = priceService.findBySourceAndDestination(source, destination);
            boolean isSaved = userService.saveTicketDetails(id, ticketNumber, source, destination);
            if (isSaved){
-               emailClass.ticketMessage(email);
+               emailClass.ticketMessage(email,ticketNumber);
                model.addAttribute("booked","ThankYou Your Ticket Booked Successfully");
                return "UserSuccessPage";
            }
@@ -155,6 +156,7 @@ public class UserRegistrationController {
     public  ResponseEntity<?> getUserId(@RequestParam Integer id,Model model) {
        UserRegistrationDto userId = userService.findById(id);
        if (userId != null) {
+           model.addAttribute("ticketDto",userId);
            log.info("userId {}", userId);
            return ResponseEntity.ok("UserId was found");
        }

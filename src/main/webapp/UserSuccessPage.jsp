@@ -32,12 +32,16 @@
                 <a class="dropdown-item" href="MetroTimings">Metro Timings</a>
             </div>
         </div>
-                    <nav class="mx-2">
+                    <nav class="mx-3">
                     <a href="info"  style="color: white; text-decoration: none">Information</a>
-                      </nav>
+                    </nav>
+         <nav>
+   <a href="abc?userId=${email.id}"  style="color: white; text-decoration: none">View Ticket History</a>
+         </nav>
     </header>
 
 <br>
+
 <div class="image-container" style="position: relative; width: 100%; text-align: center;">
     <img src="https://en-media.thebetterindia.com/uploads/2017/06/Relax37-1152x603.jpg" alt="Relaxing Image" style="width: 100%; height: auto;">
     <!-- Black transparent overlay on top of the image -->

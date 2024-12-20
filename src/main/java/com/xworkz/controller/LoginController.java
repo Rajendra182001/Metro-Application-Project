@@ -75,6 +75,7 @@ public class LoginController {
     public String loginByEmailOrMobileNumber(@RequestParam String email,@RequestParam String password,Model model){
         System.out.println("login : for  user name  and password : "+ email +"   : "+password);
        RegistrationDto registrationDto = metroService.findByEmail(email);
+       log.info("email {}",email);
        boolean isSaved = metroService.loginByEmail(email,password);
         if(isSaved){
             model.addAttribute("dto",registrationDto);

@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [19/Dec/2024:11:01:04 +0530] "GET /metro-application HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [19/Dec/2024:11:01:05 +0530] "GET /metro-application/ HTTP/1.1" 200 6073
+0:0:0:0:0:0:0:1 - - [19/Dec/2024:11:01:07 +0530] "GET /favicon.ico HTTP/1.1" 404 682
+0:0:0:0:0:0:0:1 - - [19/Dec/2024:11:01:09 +0530] "GET /metro-application/userLogin HTTP/1.1" 200 2831
+0:0:0:0:0:0:0:1 - - [19/Dec/2024:11:01:12 +0530] "GET /metro-application/inLogin HTTP/1.1" 200 6935
+0:0:0:0:0:0:0:1 - - [19/Dec/2024:11:01:14 +0530] "GET /metro-application/email?email=nataraju%40gmail.com HTTP/1.1" 200 26

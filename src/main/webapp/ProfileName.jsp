@@ -44,15 +44,15 @@
                         <input type="text" name="lastName" id="lastName"  class="form-control" placeholder="Enter your last name" value="${dto.lastName}" required/>
                     </div>
                     <div class="mb-1">
-                           <span id="uName" style="color:pink; visibility:hidden;"></span>
-                        <label for="userName" class="form-label">Username</label>
-                        <input type="text" name="userName" id="userName" class="form-control" placeholder="Enter your username" value="${dto.userName}"required/>
+                           <span id="uName" style="color:pink; visibility:hidden;" hidden></span>
+                        <label for="userName" class="form-label" hidden>Username</label>
+                        <input type="text" name="userName" id="userName" class="form-control" placeholder="Enter your username" value="${dto.userName}"hidden/>
                     </div>
                     <div class="mb-1">
                           <span id="passwordError" style="color:Red; visibility:hidden;"></span>
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" name="password" id="password"  class="form-control" placeholder="Enter your password" value="${dto.password}" required/>
-                            <small id="passwordHelpInline" class="text-muted">
+                        <label for="password" class="form-label" hidden>Password</label>
+                        <input type="password" name="password" id="password"  class="form-control" placeholder="Enter your password" value="${dto.password}" hidden/>
+                            <small id="passwordHelpInline" class="text-muted" hidden>
                               Must be 8-20 characters long.
                             </small>
                     </div>
@@ -74,7 +74,7 @@
                          <input type="file" name="file" /><br/>
                          </div>
                     <div class="mb-1">
-                    <button type="submit" id="button" class="btn btn-dark btn-sm">Edit</button>
+                    <button type="submit" id="button" class="btn btn-dark btn-sm rounded-pill">Edit</button>
                     <div>
                 </form>
             </div>

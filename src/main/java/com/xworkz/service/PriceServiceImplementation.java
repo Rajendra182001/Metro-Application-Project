@@ -49,7 +49,7 @@ public class PriceServiceImplementation implements PriceService{
             }
             else{
                 //(fare =basePrice)
-                double fare = basePrice + (priceDto.getDistance() * 2);
+                    double fare = basePrice + (priceDto.getDistance() * 2);
                 if (priceDto.getStationNumber()>3) {
                     fare-=fare*0.02;
                 }

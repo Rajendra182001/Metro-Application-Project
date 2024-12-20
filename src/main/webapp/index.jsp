@@ -30,9 +30,6 @@
             <nav class="mx-2">
             <a href="userLogin" class="btn btn-primary active btn-sm ">Login</a>
               </nav>
-            <nav class="mx-2">
-            <a href="readTimings" class="btn btn-primary active btn-sm ">Metro-Timings</a>
-              </nav>
 
     </header>
 <h1 style="text-align: center; font-size:25px; margin-top: 5px; margin-bottom: 5px;"><b>ನಮ್ಮ ಮೆಟ್ರೋಗೆ ಸುಸ್ವಾಗತ</b></h1>

@@ -1,11 +1,14 @@
 package com.xworkz.service;
 
+import com.xworkz.dto.PriceDto;
 import com.xworkz.dto.TimingDto;
 import com.xworkz.entity.AddTrainEntity;
+import com.xworkz.entity.PriceEntity;
 import com.xworkz.entity.TimingEntity;
 import com.xworkz.repository.AddTrainRepository;
 import com.xworkz.repository.LocationRepository;
 import com.xworkz.repository.TimingRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Slf4j
 public class TimingServiceImplementation implements TimingService {
 
     @Autowired
@@ -85,4 +89,20 @@ public class TimingServiceImplementation implements TimingService {
         }
         return null;
     }
+
+    @Override
+    public TimingDto findById(Integer timingId) {
+        if (timingId !=null){
+            TimingDto timingDto = new TimingDto();
+            TimingEntity timingEntity = timingRepository.findById(timingId);
+            if (timingEntity!=null){
+                BeanUtils.copyProperties(timingEntity,timingDto);
+                log.info("timingDto {}",timingDto);
+                return timingDto;
+            }
+            log.info("timingEntity",timingEntity);
+        }
+        return null;
+    }
+
 }

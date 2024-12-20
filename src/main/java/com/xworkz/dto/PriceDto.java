@@ -28,6 +28,6 @@ public class PriceDto {
     private Integer stationNumber;
     private String trainNumber;
     private Integer price;
- //   private  AddTrainDto addTrainDto;
+    private  AddTrainDto addTrainDto;
 
 }

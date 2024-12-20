@@ -30,9 +30,9 @@
 <h6><a href="index" style="text-decoration: none"><h7>Home</h7></a> > Create New Account</h6>
 </div>
 
+   <h5 style="text-align:center; color:green;">${success}</h5>
     <div class="container mt-5">
         <div class="row">
-            <!-- Image Column on the Left -->
             <nav class="col-md-6 d-flex justify-content-center align-items-center">
                 <img src="https://webtopup.bmrc.co.in/contents/images/bmrc-card-front.png" alt="Descriptive Alt Text" class="img-fluid" style="max-height: 700px;"/>
                 <h2 style="margin-top: 20px; text-align: right;">
@@ -106,7 +106,7 @@
     <!-- Footer -->
         <div class="fixed-bottom">
          <footer class="bg-dark text-white text-center py-3 mt-4" >
-    <p class="mb-0"></p>
+                 <p class="mb-0"><a href="MetroRegistration" style="text-decoration: none; color: white;"><h7>Back</h7></a></p>
     </footer>
     </div>
 

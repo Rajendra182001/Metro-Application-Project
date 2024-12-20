@@ -1,9 +1,0 @@
-0:0:0:0:0:0:0:1 - - [15/Sep/2024:19:34:35 +0530] "GET /metro-application HTTP/1.1" 302 -
-0:0:0:0:0:0:0:1 - - [15/Sep/2024:19:34:37 +0530] "GET /metro-application/ HTTP/1.1" 200 2223
-0:0:0:0:0:0:0:1 - - [15/Sep/2024:19:34:37 +0530] "GET /favicon.ico HTTP/1.1" 404 682
-0:0:0:0:0:0:0:1 - - [15/Sep/2024:19:35:21 +0530] "GET /metro-application/ HTTP/1.1" 200 2223
-0:0:0:0:0:0:0:1 - - [15/Sep/2024:19:36:40 +0530] "GET /metro-application/MetroLogin.jsp HTTP/1.1" 200 1778
-0:0:0:0:0:0:0:1 - - [15/Sep/2024:19:36:52 +0530] "GET /metro-application/MetroLogin.jsp HTTP/1.1" 200 1778
-0:0:0:0:0:0:0:1 - - [15/Sep/2024:19:37:25 +0530] "GET /metro-application/read HTTP/1.1" 200 2890
-0:0:0:0:0:0:0:1 - - [15/Sep/2024:19:37:28 +0530] "GET /metro-application/MetroLogin.jsp HTTP/1.1" 200 1778
-0:0:0:0:0:0:0:1 - - [15/Sep/2024:19:37:33 +0530] "GET /metro-application/MetroRegistration.jsp HTTP/1.1" 200 2717

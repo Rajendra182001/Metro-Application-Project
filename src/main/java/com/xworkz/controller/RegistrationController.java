@@ -139,12 +139,12 @@ public class RegistrationController {
 
     @GetMapping("/otp")
     public String enterOtp(@RequestParam String otp, @RequestParam String email, Model model) {
-        System.out.println("hiiiiiiiiiiiiiiiiiiiiiiiiiii========================");
+        log.info("email and otp {}",email,otp);
         RegistrationDto registrationDto = metroService.findByEmail(email);
-        System.out.println(registrationDto+"registrationDto==================");
+        log.info("registrationDto {}",registrationDto);
         if (registrationDto != null) {
-            System.out.println(registrationDto.getOtp());
-            System.out.println(registrationDto.getEmail());
+            log.info(registrationDto.getOtp());
+            log.info(registrationDto.getEmail());
             boolean isOtpVerified = metroService.verifyOtp(email, otp);
             if (isOtpVerified) {
                 model.addAttribute("success", registrationDto);
@@ -161,9 +161,9 @@ public class RegistrationController {
         model.addAttribute("email",registrationDto);
         if (email != null && password != null && confirmPassword !=null) {
             metroService.onUpdate(email,password,confirmPassword);
-            return "Login";
+            return "LoginByEmail";
         }
-        return "Login";
+        return "LoginByEmail";
     }
 
 

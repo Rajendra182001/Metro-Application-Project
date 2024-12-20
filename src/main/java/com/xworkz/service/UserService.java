@@ -5,6 +5,8 @@ import com.xworkz.dto.TicketDto;
 import com.xworkz.dto.UserRegistrationDto;
 import org.springframework.ui.Model;
 
+import java.util.List;
+
 public interface UserService {
      boolean onSave(UserRegistrationDto userRegistrationDto);
 
@@ -19,4 +21,8 @@ public interface UserService {
      UserRegistrationDto findById(Integer id);
 
      boolean saveTicketDetails(Integer id,String ticketNumber,String source,String destination);
+
+     List<TicketDto> getTicketDetailsFromRepo();
+
+     List<TicketDto> findingUserIdInTicket(Integer userId);
 }

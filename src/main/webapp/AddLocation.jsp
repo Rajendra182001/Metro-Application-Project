@@ -17,6 +17,13 @@
             <!-- Logo -->
             <img src="https://www.x-workz.in/Logo.png" alt="Coders World Logo" style="max-height: 50px;">
             <!-- Heading -->
+            <nav class="d-flex justify-content-center">
+            <a href="addLocations?email=${dto.email}" class="btn btn-dark btn-sm mx-2 ">Locations</a>
+            <a href="addTimings?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Timings</a>
+            <a href="addTrainType?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Add Train</a>
+             <a href="addPriceList?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Price</a>
+             <a href="readTrain?email=${dto.email}" class="btn btn-dark btn-sm mx-2">View Data</a>
+            </nav>
 
             <h1 class="text-center mb-0 flex-grow-1"></h1>
                         <div class="dropdown">
@@ -71,8 +78,8 @@
                 </select>
             </div>
                                                    <div class="mb-3">
-                                                       <label for="station"  style="color:white"  class="form-label">Select Station</label>
-                                                       <select name="locations"  id="location" class="form-control" required>
+                                                       <label for="locationsName"  style="color:white"  class="form-label">Select Station</label>
+                                                       <select name="locationsName"  id="locationsName" class="form-control" required>
                                                            <option value="">Select Station</option>
                                                            <!-- Purple Line Stations -->
                                                            <option value="Baiyappanahalli">Baiyappanahalli</option>

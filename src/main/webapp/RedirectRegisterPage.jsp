@@ -47,7 +47,7 @@
 
     <div class="fixed-bottom">
         <footer class="bg-dark text-white text-center py-3 mt-4">
-            <p class="mb-0"></p>
+                <p class="mb-0"><a href="index" style="text-decoration: none; color: white;"><h7>Back</h7></a></p>
         </footer>
     </div>
 

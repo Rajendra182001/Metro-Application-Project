@@ -16,10 +16,10 @@
             <img src="https://www.x-workz.in/Logo.png" alt="Coders World Logo" style="max-height: 50px;">
 
             <!-- Heading -->
-            <h1 class="text-center mb-0 flex-grow-1">Metro-User Login Page</h1>
+            <h1 class="text-center mb-0 flex-grow-1"></h1>
     </header>
 
-
+<br>
     <div style="max-width: 500px; margin: auto;">
         <div class="mb-3">
             <h5 class="mb-0"></h5>
@@ -34,13 +34,13 @@
 
                           <div class="mb-3">
                           <label for="password" class="form-label">Enter New Password</label>
-                          <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required/>
+                          <input type="password" name="password" id="password" class="form-control" placeholder="Enter new password" required/>
                           </div>
                                    <div class="mb-3">
                                    <label for="confirmPassword" class="form-label">Confirm Password</label>
-                                   <input type="text" name="confirmPassword" id="password"  class="form-control" placeholder="Confirm password"  required/>
+                                   <input type="text" name="confirmPassword" id="password"  class="form-control" placeholder="********"  required/>
                                    </div>
-                          <button type="submit" id="button" class="btn btn-primary">Submit</button>
+                          <button type="submit" id="button" class="btn btn-primary btn-sm rounded-pill">Submit</button>
             </form>
             </div>
         </div>

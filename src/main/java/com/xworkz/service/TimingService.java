@@ -16,4 +16,5 @@ public interface TimingService {
 
     List<TimingDto> findBySourceAndDestinations(String source,String destination);
 
+    TimingDto findById(Integer timingId);
 }

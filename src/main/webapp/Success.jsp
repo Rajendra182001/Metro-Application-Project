@@ -18,7 +18,7 @@
             <a href="addTimings?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Timings</a>
             <a href="addTrainType?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Add Train</a>
              <a href="addPriceList?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Price</a>
-             <a href="readTrain" class="btn btn-dark btn-sm mx-2">View Data</a>
+             <a href="readTrain?email=${dto.email}" class="btn btn-dark btn-sm mx-2">View Data</a>
             </nav>
 
             <!-- Heading -->
@@ -32,7 +32,6 @@
                 <div class="dropdown-menu" aria-labelledby="${dto.userName}">
                     <a class="dropdown-item" href="UpdateProfile?email=${dto.email}">Profile</a>
                     <a class="dropdown-item" href="inLogin">Log out</a>
-                    <a class="dropdown-item" href="index">Home</a>
                 </div>
             </div>
         </div>
@@ -42,6 +41,7 @@
     <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/89e28a21893757.5665bb0b83d22.gif"  alt="Descriptive Alt Text" class="img-fluid" style="max-height: 400px; width:1200;">
 </div>
 
+ <input type="email" value="${dto.email}" hidden>
 <h5 style="text-align:center; color:green;" >${success}</h5>
 <h5 style="text-align:center; color:green;">${loginSuccess}</h5>
 <h5 style="text-align:center; color:green;">${model}</h5>
@@ -51,7 +51,7 @@
     <div class="fixed-bottom">
     <footer class="bg-dark text-white text-center py-3 mt-4" >
         <div class="container text-center">
-                <p class="mb-0"><a href="MetroLogin" style="text-decoration: none"><h7>Back</h7></a></p>
+                <p class="mb-0"><a href="inLogin" style="text-decoration: none"><h7>Back</h7></a></p>
                 </div>
     </footer>
 </div>

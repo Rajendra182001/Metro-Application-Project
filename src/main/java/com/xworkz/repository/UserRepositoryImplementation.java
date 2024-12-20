@@ -12,6 +12,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import javax.swing.tree.ExpandVetoException;
+import java.util.List;
 
 @Repository
 @Slf4j
@@ -104,4 +105,38 @@ public class UserRepositoryImplementation implements  UserRepository {
         return "data";
     }
 
-}
+    @Override
+    public List<TicketEntity> getTicketDetails() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        try {
+            Query query = entityManager.createNamedQuery("readTicket");
+            List<TicketEntity> ticketEntityList =(List<TicketEntity>) query.getResultList();
+            log.info("ticketEntityList {}",ticketEntityList);
+           return ticketEntityList;
+        }catch (Exception e){
+            log.info("if it is any exceptions",e.getMessage());
+        }
+        finally {
+            entityManager.close();
+        }
+        return null;
+    }
+
+    @Override
+    public List<TicketEntity> findingUserIdInTicketHistory(Integer userId) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        try {
+            Query query = entityManager.createNamedQuery("findUserIdTicketHistory");
+            query.setParameter("userId",userId);
+            List<TicketEntity> ticketEntity =(List<TicketEntity>)  query.getResultList()  ;
+            log.info("ticketEntity {}",ticketEntity);
+            return ticketEntity;
+        } catch (Exception e) {
+            log.info("message {}", e.getMessage());
+        } finally {
+            entityManager.close();
+        }
+        return null;
+       }
+
+    }

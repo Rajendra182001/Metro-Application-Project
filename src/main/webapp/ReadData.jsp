@@ -15,31 +15,45 @@
         <div class="d-flex justify-content-between align-items-center">
             <!-- Logo -->
             <img src="https://www.x-workz.in/Logo.png" alt="Coders World Logo" style="max-height: 50px;">
-            <!-- Heading -->
+                                    <a href="addLocations?email=${dto.email}" class="btn btn-dark btn-sm mx-2 ">Locations</a>
+                                    <a href="addTimings?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Timings</a>
+                                    <a href="addTrainType?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Add Train</a>
+                                     <a href="addPriceList?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Price</a>
+                                     <a href="readTrain?email=${dto.email}" class="btn btn-dark btn-sm mx-2">View Data</a>
+
+                        <nav class="d-flex ms-auto">
+                        <img src="${pageContext.servletContext.contextPath}/getImage/${dto.imageName}" class="rounded-circle mx-2" alt="img" width=90/>
+                        </nav>
                         </div>
                    </header>
 
                                  <div>
                                 <form action="readEmail">
                                   <label for="email" class="form-label" hidden>email</label>
-                                  <input type="email" name="email" class="form-control" placeholder="please enter a email"  hidden>
+                                  <input type="email" name="email" class="form-control" placeholder="please enter a email" value="${dto.email}" hidden>
                                 </form>
                                 </div>
-<h5>${dto}</h5>
 <br>
+<pre style="text-align:center; color:green;" >${find}</pre>
+<form action="searchById" class="d-flex justify-content-center align-items-center">
+    <input type="number" name="addTrainId" class="form-control d-inline" value="${addTrainEntity.addTrainId}" style="width: auto;">
+     <input type="email" name="email" class="form-control" placeholder="please enter a email" value="${dto.email}" hidden>
+    <input type="submit" value="search" class="btn btn-primary ms-2">  <!-- Added ms-2 for spacing -->
+</form>
+
 <table class=" table table-hover mx-auto rounded-3" style="width: 60%;">
     <thead style="background-color: #6f42c1; color: white;" class="rounded-top"">
         <tr>
-            <th>addTrainId:</th>
-            <th>trainNumber:</th>
-            <th>trainType:</th>
-            <th>locations:</th>
-            <th>fromTime:</th>
-            <th>toTime:</th>
-            <th>source:</th>
-            <th>destination:</th>
-            <th>dayOfTheWeek:</th>
-            <th>price:</th>
+            <th>AddTrain Id:</th>
+            <th>Train Number:</th>
+            <th>Train Type:</th>
+            <th>Locations:</th>
+            <th>From Time:</th>
+            <th>To Time:</th>
+            <th>Source:</th>
+            <th>Destination:</th>
+            <th>Day Of TheWeek:</th>
+            <th>Price:</th>
         </tr>
     </thead>
     <tbody class="table-">
@@ -51,7 +65,7 @@
 
                     <td>
                         <c:forEach items="${addTrainEntity.locations}" var="location">
-                            ${location.locations} <br>
+                            ${location.locationsName} <br>
                         </c:forEach>
                     </td>
 
@@ -90,8 +104,28 @@
                             ${price.price} <br>
                         </c:forEach>
                     </td>
+                      <td><a href="UpdateTrainee?addTrainId=${addTrainEntity.addTrainId}&email=${dto.email}" class="btn btn-primary btn-sm"> Edit details</a></td>
                 </tr>
             </c:forEach>
+<tr>
+       <td>${addTrainEntity.addTrainId}</td>
+       <td>${addTrainEntity.trainNumber}</td>
+        <td>${addTrainEntity.trainType}</td>
+          <c:forEach items="${addTrainEntity.locations}" var="location">
+         <td>${location.locationsName}</td>
+         </c:forEach>
+    <c:forEach items="${addTrainEntity.timingEntity}" var="time">
+        <td>${time.fromTime}</td>
+        <td>${time.toTime}</td>
+        <td>${time.source}</td>
+        <td>${time.destination}</td>
+        <td>${time.dayOfTheWeek}
+    </c:forEach>
+        <c:forEach items="${addTrainEntity.priceEntity}" var="price">
+            <td>${price.price}</td>
+        </c:forEach>
+
+</tr>
     </tbody>
 </table>
         <div class="fixed-bottom">
@@ -100,6 +134,5 @@
 </div>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-
 </body>
 </html>

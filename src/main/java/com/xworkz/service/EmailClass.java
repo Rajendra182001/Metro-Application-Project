@@ -8,6 +8,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
 
 
@@ -44,6 +46,7 @@ public class EmailClass {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,"UTF-8");
             helper.setFrom("rajendra18raj@gmail.com");
             helper.addTo(email);
+            helper.setSubject("Metro Registration");
             String content = "<html>" +
                     "<body>" +
                     "<p>Your registration was completed successfully!</p>" +
@@ -58,15 +61,18 @@ public class EmailClass {
 
     }
 
-    public String ticketMessage(String email) {
+
+
+    public String ticketMessage(String email,String ticketNumber) {
 
         MimeMessagePreparator preparator = mimeMessage -> {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage,"UTF-8");
             helper.setFrom("rajendra18raj@gmail.com");
-            helper.addTo(email);
+            helper.addTo(email,ticketNumber);
+            helper.setSubject("Metro Ticket");
             String content = ("<html>" +
                     "<body>" +
-                    "<h2>Ticket Booked Succesfully<h2>" +
+                    "<h2>Ticket Booked Successfully<h2>" +
                     "</body>" +
                     "</html>");
             helper.setText(content,true);

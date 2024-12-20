@@ -18,7 +18,9 @@ public interface AddTrainService {
     //Optional<AddTrainEntity> findById(Integer addTrainId);
     AddTrainDto getTrainTypeService(String trainType);
 
-    AddTrainEntity getDetails(Integer addTrainId);
+    AddTrainDto getDetails(Integer addTrainId);
 
     AddTrainDto findByTrainNumber(String trainNumber);
+
+    boolean updatingMetroDetails(String trainType,String trainNumber,String source,String destination,String fromTime,String toTime,Integer price,String dayOfTheWeek );
 }

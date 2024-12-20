@@ -22,7 +22,7 @@ import javax.xml.ws.soap.Addressing;
 @RequestMapping("/")
 @Slf4j
 public class LocationController {
-    @Autowired
+    @Autowired //
     LocationService locationService;
 
     @Autowired

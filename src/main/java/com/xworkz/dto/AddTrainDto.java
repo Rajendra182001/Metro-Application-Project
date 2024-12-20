@@ -25,9 +25,8 @@ public class AddTrainDto {
     @NotBlank(message = "trainType must not be blank")
     private String trainType;
 
-  private   List<PriceDto> priceEntity;
-
-  private   List<LocationDto> locations;
+    private   List<PriceDto> priceEntity;
+    private   List<LocationDto> locations;
    private List<TimingDto> timingEntity;
 
 

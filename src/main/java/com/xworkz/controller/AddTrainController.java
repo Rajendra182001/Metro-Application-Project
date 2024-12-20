@@ -1,7 +1,6 @@
 package com.xworkz.controller;
 
-import com.xworkz.dto.AddTrainDto;
-import com.xworkz.dto.RegistrationDto;
+import com.xworkz.dto.*;
 import com.xworkz.entity.AddTrainEntity;
 import com.xworkz.repository.AddTrainRepository;
 import com.xworkz.service.AddTrainService;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +29,7 @@ public class AddTrainController {
     MetroService metroService;
     @Autowired
     AddTrainService addTrainService;
+
 
 
     @GetMapping("/addTrainType")
@@ -77,10 +78,10 @@ public class AddTrainController {
 
    @GetMapping("/getAllDetails")
     public String getData(@RequestParam Integer addTrainId,Model model){
-        AddTrainEntity addTrainEntity = addTrainService.getDetails(addTrainId);
-        log.info("addTrainEntity");
-       model.addAttribute("trainees",addTrainEntity);
-        model.addAttribute("addTrainEntity", addTrainEntity);  // Name it properly here.
+       AddTrainDto addTrainDto = addTrainService.getDetails(addTrainId);
+       log.info("addTrainEntity");
+       model.addAttribute("trainees",addTrainDto);
+        model.addAttribute("addTrainEntity", addTrainDto);  // Name it properly here.
         return "ReadData";
     }
 
@@ -101,10 +102,57 @@ public class AddTrainController {
     }
 
     @GetMapping("/readTrain")
-    public String readAllData(Model model){
+    public String readAllData(@RequestParam String email, Model model){
         List<AddTrainDto> addTrainEntities = addTrainService.readAddTrainData();
+        RegistrationDto registrationDto = metroService.findByEmail(email);
+        model.addAttribute("dto",registrationDto);
         log.info(" addTrainDtos   {}  ",addTrainEntities);
         model.addAttribute("addTrainEntities", addTrainEntities);
+        return "ReadData";
+    }
+
+    @GetMapping("/UpdateTrainee")
+    public String onEdit(@RequestParam Integer addTrainId,Model model){
+        AddTrainDto addTrainDto = addTrainService.getDetails(addTrainId);
+        log.info("addTrainDto {}",addTrainDto);
+        List<TimingDto> timingDto = addTrainDto.getTimingEntity();
+        List<PriceDto> priceDto = addTrainDto.getPriceEntity();
+        List<LocationDto> locationDto = addTrainDto.getLocations();
+        log.info("timingDto {}",timingDto);
+        log.info("priceDto {}",priceDto);
+        log.info("locationDto {}",locationDto);
+        model.addAttribute("dto",addTrainDto);
+        model.addAttribute("lto",locationDto);
+        return "UpdateMetroDetails";
+    }
+
+    @PostMapping("/updateDetails")
+    public String updateDetails(AddTrainDto addTrainDto,@RequestParam String email,@RequestParam String trainType,@RequestParam String trainNumber,@RequestParam String source,@RequestParam String destination,@RequestParam String fromTime,@RequestParam String toTime, @RequestParam Integer price,@RequestParam String dayOfTheWeek ,Model model){
+       log.info("add{}",addTrainDto,price);
+      log.info("email {}",email);
+       RegistrationDto registrationDto = metroService.findByEmail(email);
+        model.addAttribute("dto",registrationDto);
+        addTrainService.updatingMetroDetails(trainType,trainNumber,source,destination,fromTime,toTime,price,dayOfTheWeek);
+        List<AddTrainDto> addTrainEntities = addTrainService.readAddTrainData();
+        model.addAttribute("addTrainEntities", addTrainEntities);
+        log.info("addTrainDtos{}",addTrainEntities);
+        return "ReadData";
+    }
+
+    @GetMapping("searchById")
+    public String searchById(@RequestParam(required = false) Integer addTrainId,@RequestParam String email, Model model){
+       if (addTrainId==null){
+           RegistrationDto registrationDto = metroService.findByEmail(email);
+           model.addAttribute("dto",registrationDto);
+           model.addAttribute("find","Enter the Id Number");
+           return "ReadData";
+       }
+        AddTrainDto addTrainEntities = addTrainService.getDetails(addTrainId);
+        RegistrationDto registrationDto = metroService.findByEmail(email);
+        model.addAttribute("dto",registrationDto);
+        log.info("addTrainDto========{}",addTrainEntities);
+        model.addAttribute("addTrainEntity", addTrainEntities);
+        log.info("addTrainDtos{}",addTrainEntities);
         return "ReadData";
     }
 

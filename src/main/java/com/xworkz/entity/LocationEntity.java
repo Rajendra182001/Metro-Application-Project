@@ -22,7 +22,7 @@ public class LocationEntity {
     private Integer locationId;
     private String trainNumber;
     private String trainType;
-    private String locations;
+    private String locationsName;
     @ManyToOne
    // @JoinColumn(name = "addTrainId",referencedColumnName = "addTrainId")
     private AddTrainEntity addTrain;
@@ -35,7 +35,7 @@ public class LocationEntity {
                 "locationId=" + locationId +
                 ", trainNumber='" + trainNumber + '\'' +
                 ", trainType='" + trainType + '\'' +
-                ", locations='" + locations + '\'' +
+                ", locationsName='" + locationsName + '\'' +
                 ", addTrain=" + (addTrain!=null?addTrain.getTrainType():"Train not found") +
                 ", timing=" +  +
                 '}';

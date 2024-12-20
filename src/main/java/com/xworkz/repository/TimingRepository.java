@@ -8,6 +8,8 @@ public interface TimingRepository {
 
     public String saveTimingsFromRepo(TimingEntity timingEntity);
 
+    public String TheUpdatedTimings(TimingEntity timingEntity);
+
     TimingEntity findBySourceAndDestination(String source,String destination);
 
     List<TimingEntity> readTime();
@@ -16,4 +18,6 @@ public interface TimingRepository {
     TimingEntity findByTrainType(String trainType);
 
     List<TimingEntity> findingSourceAndDestinations(String source,String destination);
+
+    TimingEntity findById(Integer timingId);
 }

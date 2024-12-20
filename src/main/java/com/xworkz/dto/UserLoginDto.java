@@ -17,5 +17,4 @@ public class UserLoginDto {
     private String loginStart;
     private String loginEnd;
 
-
 }

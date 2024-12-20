@@ -56,7 +56,7 @@
                 <input type="email" id="email" name="email" placeholder="User@gmail.com" id="email" value="${email.email}" hidden>
                 <input type="number" id="id" name="id" value="${email.id}" hidden>
                <div class="mb-3">
-               <input type="text" placeholder="Enter OTP" name="otp" class="form-control">
+               <input type="text" placeholder="Enter OTP" name="otp" class="form-control"> <h7 class="text-center" style="color:red">${emailError}</h7>
                </div>
                <div class="mb-3">
              <button type="submit"  id="button" class="btn btn-dark btn-sm rounded-pill">Submit</button>
@@ -72,7 +72,7 @@
     <div class="fixed-bottom">
     <footer class="bg-dark text-white text-center py-3 mt-4" >
         <div class="container text-center">
-                <p class="mb-0"><a href="MetroLogin" style="text-decoration: none"><h7>Back</h7></a></p>
+                <p class="mb-0"><a href="userLogin" style="text-decoration: none; color: white;"><h7>Back</h7></a></p>
                 </div>
     </footer>
 </div>

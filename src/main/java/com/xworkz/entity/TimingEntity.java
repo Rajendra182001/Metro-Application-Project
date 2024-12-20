@@ -18,6 +18,7 @@ import java.util.List;
 @NamedQuery(name="time",query = "SELECT t FROM TimingEntity t WHERE  t.trainType = :trainType")
 @NamedQuery(name = "findTrainBySourceAndDestination",
         query = "SELECT t FROM TimingEntity t WHERE t.source =:source AND t.destination = :destination")
+@NamedQuery(name="timingId",query = "SELECT p FROM TimingEntity p WHERE p.timingId = :timingId")
 
 public class TimingEntity {
     @Id

@@ -13,6 +13,13 @@
             <!-- Logo -->
             <img src="https://www.x-workz.in/Logo.png" alt="Coders World Logo" style="max-height: 50px;">
             <!-- Heading -->
+                        <nav class="d-flex justify-content-center">
+                        <a href="addLocations?email=${dto.email}" class="btn btn-dark btn-sm mx-2 ">Locations</a>
+                        <a href="addTimings?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Timings</a>
+                        <a href="addTrainType?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Add Train</a>
+                         <a href="addPriceList?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Price</a>
+                         <a href="readTrain?email=${dto.email}" class="btn btn-dark btn-sm mx-2">View Data</a>
+                        </nav>
             <h1 class="text-center mb-0 flex-grow-1"></h1>
                         <div class="dropdown">
                    <img src="${pageContext.servletContext.contextPath}/getImage/${dto.imageName}" class="rounded-circle" alt="img" width=90/>
@@ -95,7 +102,7 @@
 
 <div class="mb-3">
     <label for="source" class="form-label"  style="color:white">Select Source Station</label>
-    <select name="source" id="source" class="form-control" required>
+    <select name="source" id="sourceId" class="form-control" required>
         <option value="">Select Source Station</option>
         <!-- Purple Line Stations -->
         <optgroup label="Purple Line">
@@ -150,7 +157,7 @@
 
 <div class="mb-3">
     <label for="destination"  style="color:white" class="form-label">Select Destination Station</label>
-    <select name="destination" id="destination" class="form-control" required>
+    <select name="destination"  obBlur="destination()" id="destinationId" class="form-control" required>
         <option value="">Select Destination Station</option>
         <!-- Purple Line Stations -->
         <optgroup label="Purple Line">
@@ -235,6 +242,24 @@
                 <p class="mb-0"></p>
             </div>
         </footer>
+
+        <script type="text/javascript">
+            const destination = () => {
+                let source = document.getElementById("sourceId").value;
+                let destination = document.getElementById("destinationId").value;
+                let button = document.getElementById("button");
+                console.log("source: " + source);
+                console.log("destination: " + destination);
+                if (source === destination) {
+                    button.disabled = true;  // Disable the button
+                } else {
+                    button.disabled = false;  // Enable the button
+                }
+            }
+            document.getElementById("sourceId").addEventListener("change", destination);
+            document.getElementById("destinationId").addEventListener("change", destination);
+        </script>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 

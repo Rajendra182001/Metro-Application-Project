@@ -9,6 +9,9 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "TicketData")
+@NamedQuery(name = "readTicket", query = "Select entities from TicketEntity entities")
+@NamedQuery(name = "findUserIdTicketHistory",
+        query = "SELECT entity FROM TicketEntity entity WHERE entity.userId=:userId")
 public class TicketEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

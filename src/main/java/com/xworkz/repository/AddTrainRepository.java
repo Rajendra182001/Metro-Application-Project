@@ -19,4 +19,6 @@ public interface AddTrainRepository {
 
     AddTrainEntity findTrainNumber(String trainNumber);
 
+    public String savingTheUpdateDetails(AddTrainEntity addTrainEntity);
+
 }

@@ -18,6 +18,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -35,33 +37,33 @@ public class UserServiceImplementation implements UserService {
     private EmailClass emailClass;
 
     @Autowired
-    private   PriceService priceService;
+    private PriceService priceService;
 
     @Autowired
     private EncryptionDecryption encryptionDecryption;
 
     @Override
     public boolean onSave(UserRegistrationDto userRegistrationDto) {
-  UserRegistrationEntity userRegistrationEntity = new UserRegistrationEntity();
-  userRegistrationDto.setPassword(encryptionDecryption.encrypt(userRegistrationDto.getPassword()));
+        UserRegistrationEntity userRegistrationEntity = new UserRegistrationEntity();
+        userRegistrationDto.setPassword(encryptionDecryption.encrypt(userRegistrationDto.getPassword()));
         userRegistrationDto.setImageName("temp.png");
         userRegistrationDto.setImageType("image/png");
-        BeanUtils.copyProperties(userRegistrationDto,userRegistrationEntity);
+        BeanUtils.copyProperties(userRegistrationDto, userRegistrationEntity);
         userRepository.save(userRegistrationEntity);
         return true;
     }
 
     @Override
     public UserRegistrationDto lookingForEmail(String email) {
-        if(email != null){
-            log.info("email in service {}",email);
+        if (email != null) {
+            log.info("email in service {}", email);
             UserRegistrationDto userRegistrationDto = new UserRegistrationDto();
             UserRegistrationEntity userRegistrationEntity = userRepository.findingEmailFromDataBase(email);
-            log.info("userRegistrationEntity {}",userRegistrationEntity);
-            if(userRegistrationEntity!=null){
-            BeanUtils.copyProperties(userRegistrationEntity,userRegistrationDto);
-            log.info("userRegistrationDto {}",userRegistrationDto);
-            return userRegistrationDto;
+            log.info("userRegistrationEntity {}", userRegistrationEntity);
+            if (userRegistrationEntity != null) {
+                BeanUtils.copyProperties(userRegistrationEntity, userRegistrationDto);
+                log.info("userRegistrationDto {}", userRegistrationDto);
+                return userRegistrationDto;
             }
         }
         return null;
@@ -72,7 +74,7 @@ public class UserServiceImplementation implements UserService {
         UserRegistrationDto userRegistrationDto = lookingForEmail(email);
         UserRegistrationEntity userRegistrationEntity1 = userRepository.findingEmailFromDataBase(email);
         UserRegistrationEntity userRegistrationEntity = new UserRegistrationEntity();
-        UserLoginDto userLoginDto =new UserLoginDto();
+        UserLoginDto userLoginDto = new UserLoginDto();
         UserLoginEntity userLoginEntity = new UserLoginEntity();
         userLoginDto.setLoginId(userRegistrationDto.getId());
         userLoginDto.setFirstName(userRegistrationDto.getFirstName());
@@ -81,16 +83,16 @@ public class UserServiceImplementation implements UserService {
         userLoginDto.setMobileNumber(userRegistrationDto.getMobileNumber());
         userLoginDto.setLoginStart(LocalDateTime.now().toString());
         userLoginDto.setLoginEnd(null);
-        BeanUtils.copyProperties(userLoginDto,userLoginEntity);
+        BeanUtils.copyProperties(userLoginDto, userLoginEntity);
         return true;
     }
 
     @Override
     public boolean sendingOtpToRepo(String email, String otp) {
         UserRegistrationEntity userRegistrationEntity = userRepository.findingEmailFromDataBase(email);
-        if (userRegistrationEntity !=null){
+        if (userRegistrationEntity != null) {
             String saveOtp = emailClass.emailSend(email);
-            userRepository.SaveOtp(email,saveOtp);
+            userRepository.SaveOtp(email, saveOtp);
             return true;
         }
         return false;
@@ -99,11 +101,11 @@ public class UserServiceImplementation implements UserService {
     @Override
     public boolean verifyEmailAndOtp(String email, String otp) {
         UserRegistrationEntity userRegistrationEntity = userRepository.findingEmailFromDataBase(email);
-        if (userRegistrationEntity!=null){
+        if (userRegistrationEntity != null) {
             UserRegistrationDto userRegistrationDto = new UserRegistrationDto();
-            BeanUtils.copyProperties(userRegistrationEntity,userRegistrationDto);
-            if (userRegistrationEntity.getOtp().equals(otp)&&userRegistrationEntity.getEmail().equals(email)){
-                UserLoginDto userLoginDto =new UserLoginDto();
+            BeanUtils.copyProperties(userRegistrationEntity, userRegistrationDto);
+            if (userRegistrationEntity.getOtp().equals(otp) && userRegistrationEntity.getEmail().equals(email)) {
+                UserLoginDto userLoginDto = new UserLoginDto();
                 UserLoginEntity userLoginEntity = new UserLoginEntity();
                 userLoginDto.setLoginId(userRegistrationDto.getId());
                 userLoginDto.setFirstName(userRegistrationDto.getFirstName());
@@ -112,19 +114,19 @@ public class UserServiceImplementation implements UserService {
                 userLoginDto.setMobileNumber(userRegistrationDto.getMobileNumber());
                 userLoginDto.setLoginStart(LocalDateTime.now().toString());
                 userLoginDto.setLoginEnd(null);
-                BeanUtils.copyProperties(userLoginDto,userLoginEntity);
+                BeanUtils.copyProperties(userLoginDto, userLoginEntity);
                 userLoginRepository.loginByEmail(userLoginEntity);
                 log.info(otp);
                 return true;
             }
-            return true;
+            return false;
         }
         return false;
     }
 
     @Override
     public UserRegistrationDto findById(Integer id) {
-        if(id!=null) {
+        if (id != null) {
             UserRegistrationDto userRegistrationDto = new UserRegistrationDto();
             UserRegistrationEntity userRegistrationEntity = userRepository.findByUserId(id);
             if (userRegistrationEntity != null) {
@@ -136,9 +138,9 @@ public class UserServiceImplementation implements UserService {
     }
 
     @Override
-    public boolean saveTicketDetails(Integer id,String ticketNumber, String source, String destination) {
+    public boolean saveTicketDetails(Integer id, String ticketNumber, String source, String destination) {
         PriceDto priceDto = priceService.findBySourceAndDestination(source, destination);
-        if (priceDto.getSource().equals(source)&&priceDto.getDestination().equals(destination)){
+        if (priceDto.getSource().equals(source) && priceDto.getDestination().equals(destination)) {
             TicketDto ticketDto = new TicketDto();
             TicketEntity ticketEntity = new TicketEntity();
             ticketDto.setUserId(id);
@@ -146,12 +148,54 @@ public class UserServiceImplementation implements UserService {
             ticketDto.setDestination(destination);
             ticketDto.setPrice(priceDto.getPrice());
             ticketDto.setTokenNumber(ticketNumber);
-            BeanUtils.copyProperties(ticketDto,ticketEntity);
+            BeanUtils.copyProperties(ticketDto, ticketEntity);
             userRepository.saveTheDetails(ticketEntity);
             return true;
         }
         return false;
     }
 
+    @Override
+    public List<TicketDto> getTicketDetailsFromRepo() {
+        List<TicketEntity> ticketDetails = userRepository.getTicketDetails();
+        List<TicketDto> ticketDtos = new ArrayList<>();
+        if (!(ticketDetails).isEmpty()) {
+            for (TicketEntity ticketEntity : ticketDetails) {
+                TicketDto ticketDto = new TicketDto();
+                BeanUtils.copyProperties(ticketEntity, ticketDto);
+                ticketDtos.add(ticketDto);
+                return ticketDtos;
+            }
+        }
+        return null;
+    }
+    @Override
+    public List<TicketDto> findingUserIdInTicket(Integer userId) {
+        if (userId != null) {
+            // Fetch the ticket list based on the userId
+            List<TicketEntity> ticketEntityList = userRepository.findingUserIdInTicketHistory(userId);
+
+            // If the ticket list is not empty
+            if (ticketEntityList != null && !ticketEntityList.isEmpty()) {
+                List<TicketDto> ticketDtos = new ArrayList<>();
+
+                // Iterate through each ticket entity and convert to DTO
+                for (TicketEntity ticketEntity : ticketEntityList) {
+                    TicketDto ticketDto = new TicketDto();
+                    BeanUtils.copyProperties(ticketEntity, ticketDto);
+                    ticketDtos.add(ticketDto);
+                }
+
+                // Log the list of TicketDto objects
+                log.info("ticketDtos in service: {}", ticketDtos);
+
+                // Return the full list after processing all ticket entities
+                return ticketDtos;
+            }
+        }
+
+        // Return an empty list instead of null when no tickets are found
+        return new ArrayList<>();
+    }
 
 }

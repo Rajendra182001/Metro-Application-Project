@@ -1,11 +1,13 @@
 package com.xworkz.controller;
 
+import com.xworkz.dto.PriceDto;
 import com.xworkz.dto.RegistrationDto;
 import com.xworkz.dto.TimingDto;
 import com.xworkz.service.MetroService;
 import com.xworkz.service.TimingService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -72,4 +74,19 @@ public class TimingsController {
 
         return "";
     }
+
+    @GetMapping("findingTimingId")
+    public ResponseEntity<?> findById(@RequestParam Integer timingId , Model model){
+        log.info("timingId",timingId);
+        TimingDto timingDto  = timingService.findById(timingId);
+        log.info("timingDto {} ",timingDto);
+        if (timingDto!=null) {
+            log.info("==timingDto== {}", timingDto);
+            return ResponseEntity.ok("Found Id");
+        }
+        return ResponseEntity.ok("Not Found");
+    }
+
+
+
 }

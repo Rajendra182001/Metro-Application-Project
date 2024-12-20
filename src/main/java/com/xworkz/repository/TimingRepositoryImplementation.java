@@ -1,6 +1,7 @@
 package com.xworkz.repository;
 
 import com.xworkz.entity.LocationEntity;
+import com.xworkz.entity.PriceEntity;
 import com.xworkz.entity.TimingEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,22 @@ public class TimingRepositoryImplementation implements TimingRepository{
             transaction.commit();
         }catch (Exception e){
             log.info("=========================");
+        }finally {
+            entityManager.close();
+        }
+        return "";
+    }
+
+    @Override
+    public String TheUpdatedTimings(TimingEntity timingEntity) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        try {
+            EntityTransaction transaction = entityManager.getTransaction();
+            transaction.begin();
+            entityManager.merge(timingEntity);
+            transaction.commit();
+        }catch (Exception e){
+            log.info("exception in the updating Time entity {}",e.getMessage());
         }finally {
             entityManager.close();
         }
@@ -96,6 +113,23 @@ try{
        log.info("====================================");
         }finally {
          entityManager.close();
+        }
+        return null;
+    }
+
+    @Override
+    public TimingEntity findById(Integer timingId) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        try {
+            Query query = entityManager.createNamedQuery("timingId");
+            query.setParameter("timingId",timingId);
+            Object object =query.getSingleResult();
+            TimingEntity timingEntity = (TimingEntity) object;
+            return timingEntity;
+        }catch (Exception e){
+            log.info("timingEntity {}",e.getMessage());
+        }finally {
+            entityManager.close();
         }
         return null;
     }

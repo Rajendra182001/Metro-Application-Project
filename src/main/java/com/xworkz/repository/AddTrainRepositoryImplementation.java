@@ -128,5 +128,22 @@ public class AddTrainRepositoryImplementation implements AddTrainRepository {
         return null;
     }
 
+        @Override
+        public String savingTheUpdateDetails(AddTrainEntity addTrainEntity) {
+            EntityManager entityManager = entityManagerFactory.createEntityManager();
+            try {
+                EntityTransaction transaction = entityManager.getTransaction();
+                transaction.begin();
+                entityManager.merge(addTrainEntity);
+                transaction.commit();
+            }catch (Exception e){
+                log.info("print exceptions {}",e.getMessage());
+            }
+            finally {
+                entityManager.close();
+            }
+            return null;
+        }
+
 
 }

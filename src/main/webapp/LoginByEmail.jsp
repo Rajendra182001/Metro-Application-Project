@@ -78,7 +78,7 @@
     <!-- Footer -->
     <footer class="bg-dark text-white py-3 fixed-bottom">
         <div class="container text-center">
-        <p class="mb-0"><a href="index" style="text-decoration: none"><h7>Back</h7></a></p>
+                        <p class="mb-0"><a href="userLogin" style="text-decoration: none; color: white;"><h7>Back</h7></a></p>
         </div>
     </footer>
 

@@ -15,6 +15,13 @@
         <div class="d-flex justify-content-between align-items-center">
             <!-- Logo -->
             <img src="https://www.x-workz.in/Logo.png" alt="Coders World Logo" style="max-height: 50px;">
+                        <nav class="d-flex justify-content-center">
+                        <a href="addLocations?email=${dto.email}" class="btn btn-dark btn-sm mx-2 ">Locations</a>
+                        <a href="addTimings?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Timings</a>
+                        <a href="addTrainType?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Add Train</a>
+                         <a href="addPriceList?email=${dto.email}" class="btn btn-dark btn-sm mx-2">Price</a>
+                         <a href="readTrain?email=${dto.email}" class="btn btn-dark btn-sm mx-2">View Data</a>
+                        </nav>
             <!-- Heading -->
             <h1 class="text-center mb-0 flex-grow-1"></h1>
                         <div class="dropdown">

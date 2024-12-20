@@ -4,8 +4,7 @@ import com.xworkz.dto.AddTrainDto;
 import com.xworkz.dto.LocationDto;
 import com.xworkz.dto.PriceDto;
 import com.xworkz.dto.TimingDto;
-import com.xworkz.entity.AddTrainEntity;
-import com.xworkz.entity.LocationEntity;
+import com.xworkz.entity.*;
 import com.xworkz.repository.AddTrainRepository;
 import com.xworkz.repository.LocationRepository;
 import com.xworkz.repository.PriceRepository;
@@ -65,7 +64,7 @@ public class AddTrainServiceImplementation implements AddTrainService {
     }
 
     @Override
-    public List<AddTrainDto> readAddTrainData() {
+        public List<AddTrainDto> readAddTrainData() {
         List<AddTrainEntity> addTrainEntities = addTrainRepository.readAddTrainDetails();
 
       List<AddTrainDto> addTrainDtoList=  addTrainEntities.stream().map(addTrainEntity -> {
@@ -75,7 +74,7 @@ public class AddTrainServiceImplementation implements AddTrainService {
             if (addTrainEntity.getLocations()!=null){
               List<LocationDto> locationDtoList =  addTrainEntity.getLocations().stream().map(locationEntity -> {
                     LocationDto locationDto =new LocationDto();
-                    BeanUtils.copyProperties(locationEntity,locationEntity);
+                    BeanUtils.copyProperties(locationEntity,locationDto);
                     return locationDto;
                 }).collect(Collectors.toList());
               addTrainDto.setLocations(locationDtoList);
@@ -120,9 +119,42 @@ public class AddTrainServiceImplementation implements AddTrainService {
     }
 
     @Override
-    public AddTrainEntity getDetails(Integer addTrainId) {
-
-        return addTrainRepository.findById(addTrainId);
+    public AddTrainDto getDetails(Integer addTrainId) {
+         if (addTrainId!=null){
+             String id = String.valueOf(addTrainId);
+             AddTrainDto addTrainDto = new AddTrainDto();
+             AddTrainEntity addTrainEntity = addTrainRepository.findById(Integer.valueOf(id));
+         log.info("addTrainEntity {}",addTrainEntity);
+         if (addTrainEntity!=null){
+             BeanUtils.copyProperties(addTrainEntity,addTrainDto);
+             if (addTrainEntity.getTimingEntity()!=null){
+                 List<TimingDto> timingDtoList = addTrainEntity.getTimingEntity().stream().map(timingEntity -> {
+                     TimingDto timingDto=new TimingDto();
+                     BeanUtils.copyProperties(timingEntity,timingDto);
+                     return timingDto;
+                 }).collect(Collectors.toList());
+                 addTrainDto.setTimingEntity(timingDtoList);
+             }
+             if (addTrainEntity.getPriceEntity() != null) {
+                 List<PriceDto> priceDtoList= addTrainEntity.getPriceEntity().stream().map(priceEntity -> {
+                     PriceDto priceDto=new PriceDto();
+                     BeanUtils.copyProperties(priceEntity,priceDto);
+                     return priceDto;
+                 }).collect(Collectors.toList());
+                 addTrainDto.setPriceEntity(priceDtoList);
+             }
+             if (addTrainEntity.getLocations()!=null){
+                 List<LocationDto> locationDtoList =  addTrainEntity.getLocations().stream().map(locationEntity -> {
+                     LocationDto locationDto =new LocationDto();
+                     BeanUtils.copyProperties(locationEntity,locationDto);
+                     return locationDto;
+                 }).collect(Collectors.toList());
+                 addTrainDto.setLocations(locationDtoList);
+             }
+             return addTrainDto;
+         }
+         }
+         return null;
 
 
     }
@@ -138,5 +170,35 @@ public class AddTrainServiceImplementation implements AddTrainService {
         }
         return null;
     }
+
+    @Override
+    public boolean updatingMetroDetails(String trainType,String trainNumber,String source,String destination,String fromTime,String toTime,Integer price,String dayOfTheWeek) {
+        AddTrainDto addTrainDto = findByTrainNumber(trainNumber);
+        AddTrainEntity addTrainEntity = addTrainRepository.findById(addTrainDto.getAddTrainId());
+        log.info("This Me addTrainDto {}",addTrainDto);
+        PriceEntity priceEntity = priceRepository.findById(addTrainDto.getAddTrainId());
+        TimingEntity timingEntity = timingRepository.findById(addTrainDto.getAddTrainId());
+        if (addTrainEntity.getAddTrainId().equals(addTrainDto.getAddTrainId())){
+            addTrainEntity.setTrainType(trainType);
+            addTrainEntity.setTrainNumber(trainNumber);
+            addTrainRepository.savingTheUpdateDetails(addTrainEntity);
+            if (addTrainDto.getAddTrainId().equals(priceEntity.getPriceId())){
+                priceEntity.setPrice(price);
+                priceRepository.savePriceToDataBase(priceEntity);
+                if (addTrainDto.getAddTrainId().equals(timingEntity.getTimingId())){
+                timingEntity.setSource(source);
+                timingEntity.setDestination(destination);
+                timingEntity.setFromTime(fromTime);
+                timingEntity.setToTime(toTime);
+                timingEntity.setDayOfTheWeek(dayOfTheWeek);
+                timingRepository.TheUpdatedTimings(timingEntity);
+                return true;
+            }
+        }             return true;
+
+        }
+            log.info("timingEntity*********************** {}",timingEntity);
+        return false;
+            }
 
 }
