@@ -1,0 +1,7 @@
+0:0:0:0:0:0:0:1 - - [14/Jan/2025:13:33:31 +0530] "GET /metro-application HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [14/Jan/2025:13:33:32 +0530] "GET /metro-application/ HTTP/1.1" 200 6073
+0:0:0:0:0:0:0:1 - - [14/Jan/2025:13:33:33 +0530] "GET /favicon.ico HTTP/1.1" 404 682
+0:0:0:0:0:0:0:1 - - [14/Jan/2025:13:33:46 +0530] "GET /metro-application/MetroRegistration HTTP/1.1" 200 4267
+0:0:0:0:0:0:0:1 - - [14/Jan/2025:13:33:50 +0530] "GET /metro-application/userLogin HTTP/1.1" 200 2831
+0:0:0:0:0:0:0:1 - - [14/Jan/2025:13:33:52 +0530] "GET /metro-application/userCanLoginHere HTTP/1.1" 200 5139
+0:0:0:0:0:0:0:1 - - [14/Jan/2025:13:34:00 +0530] "GET /metro-application/inLogin HTTP/1.1" 200 6935

@@ -112,23 +112,25 @@ public class AddTrainController {
     }
 
     @GetMapping("/UpdateTrainee")
-    public String onEdit(@RequestParam Integer addTrainId,Model model){
+    public String onEdit(@RequestParam Integer addTrainId,@RequestParam String email, Model model){
         AddTrainDto addTrainDto = addTrainService.getDetails(addTrainId);
-        log.info("addTrainDto {}",addTrainDto);
+//        log.info("addTrainDto {}",addTrainDto);
         List<TimingDto> timingDto = addTrainDto.getTimingEntity();
         List<PriceDto> priceDto = addTrainDto.getPriceEntity();
         List<LocationDto> locationDto = addTrainDto.getLocations();
-        log.info("timingDto {}",timingDto);
-        log.info("priceDto {}",priceDto);
-        log.info("locationDto {}",locationDto);
-        model.addAttribute("dto",addTrainDto);
+//        log.info("timingDto {}",timingDto);
+//        log.info("priceDto {}",priceDto);
+//        log.info("locationDto {}",locationDto);
+        RegistrationDto dto = metroService.findByEmail(email);
+        model.addAttribute("dto",dto);
+        model.addAttribute("ato",addTrainDto);
         model.addAttribute("lto",locationDto);
         return "UpdateMetroDetails";
     }
 
     @PostMapping("/updateDetails")
     public String updateDetails(AddTrainDto addTrainDto,@RequestParam String email,@RequestParam String trainType,@RequestParam String trainNumber,@RequestParam String source,@RequestParam String destination,@RequestParam String fromTime,@RequestParam String toTime, @RequestParam Integer price,@RequestParam String dayOfTheWeek ,Model model){
-       log.info("add{}",addTrainDto,price);
+//       log.info("add{}",addTrainDto,price);
       log.info("email {}",email);
        RegistrationDto registrationDto = metroService.findByEmail(email);
         model.addAttribute("dto",registrationDto);

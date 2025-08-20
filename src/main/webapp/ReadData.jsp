@@ -38,6 +38,7 @@
 <form action="searchById" class="d-flex justify-content-center align-items-center">
     <input type="number" name="addTrainId" class="form-control d-inline" value="${addTrainEntity.addTrainId}" style="width: auto;">
      <input type="email" name="email" class="form-control" placeholder="please enter a email" value="${dto.email}" hidden>
+
     <input type="submit" value="search" class="btn btn-primary ms-2">  <!-- Added ms-2 for spacing -->
 </form>
 
@@ -52,7 +53,7 @@
             <th>To Time:</th>
             <th>Source:</th>
             <th>Destination:</th>
-            <th>Day Of TheWeek:</th>
+            <th>Day Of The Week:</th>
             <th>Price:</th>
         </tr>
     </thead>
@@ -104,7 +105,7 @@
                             ${price.price} <br>
                         </c:forEach>
                     </td>
-                      <td><a href="UpdateTrainee?addTrainId=${addTrainEntity.addTrainId}&email=${dto.email}" class="btn btn-primary btn-sm"> Edit details</a></td>
+                      <td><a href="UpdateTrainee?addTrainId=${addTrainEntity.addTrainId}&email=${dto.email}" class="btn btn-danger btn-sm"> Edit details</a></td>
                 </tr>
             </c:forEach>
 <tr>

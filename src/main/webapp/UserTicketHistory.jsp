@@ -22,19 +22,17 @@
     <table class="table table-hover mx-auto rounded-3" style="width: 60%;">
         <thead style="background-color: #6f42c1; color: white;" class="rounded-top">
             <tr>
-                <th>ticketId</th>
-                <th>userId</th>
-                <th>source</th>
-                <th>destination</th>
-                <th>price</th>
-                <th>tokenNumber</th>
+                <th>Ticket Id</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Price</th>
+                <th>TokenNumber</th>
             </tr>
         </thead>
         <tbody>
             <c:forEach var="ticket" items="${ticketDto}">
                 <tr>
                     <td>${ticket.ticketId}</td>
-                    <td>${ticket.userId}</td>
                     <td>${ticket.source}</td>
                     <td>${ticket.destination}</td>
                     <td>${ticket.price}</td>

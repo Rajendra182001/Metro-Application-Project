@@ -26,9 +26,7 @@ public class LoginDto {
     @NotEmpty(message = "email must not be empty")
     @NotBlank(message = "email must not be blank")
     private String email;
-
     private String mobileNumber;
-
     private String gender;
     private String loginstart;
     private String loginend;

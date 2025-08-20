@@ -25,7 +25,7 @@
             <h1 class="text-center mb-0 flex-grow-1"></h1>
             <!-- Dropdown -->
             <div class="dropdown mb-1">
-                <img src="${pageContext.servletContext.contextPath}/getImage/${dto.imageName}" class="rounded-circle mx-2" alt="img" width=90/>
+                    <img src="${pageContext.servletContext.contextPath}/getImage/${dto.imageName}" class="rounded-circle mx-2" alt="img" width=90/>
                 <a class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split mx-2" href="" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
        ${dto.userName}
                 </a>

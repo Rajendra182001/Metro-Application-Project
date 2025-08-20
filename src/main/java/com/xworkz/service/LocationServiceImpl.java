@@ -26,10 +26,10 @@ public class LocationServiceImpl implements LocationService{
     LocationRepository locationRepository;
 
     @Autowired
-    MetroRepository metroRepository;
+    private MetroRepository metroRepository;
     @Autowired
-    AddTrainRepository addTrainRepository;
-    @Autowired
+   private AddTrainRepository addTrainRepository;
+   private @Autowired
     PriceRepository priceRepository;
     @Override
     public boolean onSaveLocationAndType(LocationDto locationDto) {
